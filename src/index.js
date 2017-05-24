@@ -12,6 +12,7 @@ var login = require('./app/login');
 var chat = require('./app/chat');
 var userService = require('./app/services/user.service');
 var otherUsers = require('./app/services/otherUsers.service');
+var customEnter = require('./app/directives/customEnter.directive');
 
 require('./index.css');
 
@@ -25,4 +26,5 @@ angular
   .component('login', login)
   .component('chat', chat)
   .factory('userService', userService)
-  .factory('otherUsers', otherUsers);
+  .factory('otherUsers', otherUsers)
+  .directive('customEnter', customEnter);

@@ -7,17 +7,22 @@ module.exports = {
 /* @ngInject */
 function controller($log, $state, userService) {
   var vm = this;
-  vm.userName = null;
+  vm.userName = userService.getLoggedInUser();
+  vm.login = login;
 
-  vm.login = function () {
+  function login() {
     if (validate()) {
       $log.log('Loging in as [' + vm.userName + ']');
-      userService.login(vm.userName);
-      $state.go('chat');
+      userService.register(vm.userName);
+      goToChatPage();
     } else {
       $log.warn('Invalid name');
     }
-  };
+  }
+
+  function goToChatPage() {
+    $state.go('chat');
+  }
 
   function validate() {
     return !(!vm.userName || vm.userName.length === 0);

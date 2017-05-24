@@ -14,6 +14,7 @@ function userService($log) {
   function register(newUserName) {
     $log.log('Registering ' + newUserName);
     user.name = newUserName;
+    save(newUserName);
   }
 
   function login(userName) {
@@ -22,6 +23,17 @@ function userService($log) {
   }
 
   function getUser() {
+    if (load()) {
+      user.name = load();
+    }
     return user.name;
+  }
+
+  function save(userName) {
+    localStorage.setItem('user', userName);
+  }
+
+  function load() {
+    return localStorage.getItem('user');
   }
 }

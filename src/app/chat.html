@@ -2,6 +2,6 @@
 <textarea rows="30" cols="50" ng-model="vm.allChatText">
 </textarea>
 <br>
-<input type="text" placeholder="Message" size="35" ng-model="vm.userMessage">
+<input type="text" placeholder="Message" size="35" ng-model="vm.userMessage" custom-enter="vm.post()">
 <button ng-click="vm.post()">Post</button>
 <br>
