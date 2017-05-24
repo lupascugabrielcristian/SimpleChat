@@ -1,4 +1,13 @@
-<p>User Login</p>
+<div class="login-main" style="display: table;">
+	<div  style="display:table-row">
+		<div class="login-row"  style="display:table-cell">
+			<div>
+				Your name: <input class="login-user"type="text" ng-model="vm.userName" placeholder="Insert" custom-enter="vm.login()"><br>
+				<button class="login-btn" ng-click="vm.login()">Login</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-Your name: <input type="text" ng-model="vm.userName" placeholder="Insert" custom-enter="vm.login()"><br>
-<button ng-click="vm.login()">Login</button>
+
+

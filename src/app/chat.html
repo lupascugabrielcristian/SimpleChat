@@ -1,7 +1,15 @@
-<div>Chat page</div>
-<textarea rows="30" cols="50" ng-model="vm.allChatText">
-</textarea>
-<br>
-<input type="text" placeholder="Message" size="35" ng-model="vm.userMessage" custom-enter="vm.post()">
-<button ng-click="vm.post()">Post</button>
-<br>
+<div class="login-main" style="display: table;">
+	<div  style="display:table-row">
+		<div class="login-row"  style="display:table-cell">
+			<div>
+				<div>Chat page</div>
+				<textarea rows="30" cols="50" ng-model="vm.allChatText">
+				</textarea>
+				<br>
+				<input class="chat-input" type="text" placeholder="Message" ng-model="vm.userMessage" custom-enter="vm.post()">
+				<button class="post-btn" ng-click="vm.post()">Post</button>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>

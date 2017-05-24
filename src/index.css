@@ -110,3 +110,35 @@ a:hover {
   font-size: 1.5rem;
   margin: 0 0 2rem 0;
 }
+
+.login-main {
+  width: 100%;
+  height: 100%;
+}
+
+.login-row {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.login-btn {
+  width: 200px;
+  margin: 20px;
+  padding: 8px;
+}
+
+.post-btn{
+  height: 30px;
+}
+
+.login-user {
+  padding: 5px;
+  font-size: larger;
+}
+
+.chat-input {
+  padding: 6px;
+  height: 15px;
+  width: 350px;
+  color: #54545a;
+}

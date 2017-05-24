@@ -4,7 +4,7 @@ module.exports = {
   controllerAs: 'vm'
 };
 
-function controller($scope, $log, userService, $state, otherUsers) {
+function controller($scope, $log, userService, $state, otherUsers, messageProvider) {
   var vm = this;
   vm.userMessage = null;
   vm.post = postUserMessage;
@@ -20,7 +20,7 @@ function controller($scope, $log, userService, $state, otherUsers) {
 
   function startListening() {
     $scope.$on('messageSent', function (event, messageObj) {
-      var someUserMsg = new Message(messageObj.message, messageObj.user);
+      var someUserMsg = messageProvider.getMessageOf(messageObj.message, messageObj.user);
       postMessage(someUserMsg);
     });
   }
@@ -29,20 +29,17 @@ function controller($scope, $log, userService, $state, otherUsers) {
     if (!messageObj || !messageObj.content || messageObj.content.length === 0) {
       return;
     }
+    playSound();
     vm.allChatText = addToChat(messageObj, vm.allChatText);
   }
 
   function postUserMessage() {
     if (vm.userMessage && vm.userMessage.length > 0) {
-      var messageToAdd = composeMessage(vm.userMessage);
+      playSound();
+      var messageToAdd = messageProvider.getMessageOf(vm.userMessage, userService.getLoggedInUser());
       vm.allChatText = addToChat(messageToAdd, vm.allChatText);
       vm.userMessage = null;
     }
-  }
-
-  function composeMessage(messageText) {
-    var userName = userService.getLoggedInUser();
-    return new Message(messageText, userName);
   }
 
   function addToChat(newMessage, currentChat) {
@@ -51,13 +48,8 @@ function controller($scope, $log, userService, $state, otherUsers) {
     return allChatText;
   }
 
-  function Message(message, user) {
-    this.author = user;
-    this.time = null;
-    this.content = null;
-
-    var currentDate = new Date();
-    this.time = currentDate.getHours() + ':' + currentDate.getMinutes();
-    this.content = user + '(' + this.time + '): ' + message + '\n';
+  function playSound() {
+    var audio = new Audio('./app/click2.mp3');
+    audio.play();
   }
 }
