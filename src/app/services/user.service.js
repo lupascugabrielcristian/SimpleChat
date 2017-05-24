@@ -8,7 +8,9 @@ function userService($log) {
   return {
     register: register,
     login: login,
-    getLoggedInUser: getUser
+    logout: logout,
+    getLoggedInUser: getUser,
+    isLoggedIn: isLoggedIn
   };
 
   function register(newUserName) {
@@ -20,6 +22,15 @@ function userService($log) {
   function login(userName) {
     $log.log('Login in ' + userName);
     user.name = userName;
+  }
+
+  function logout() {
+    localStorage.removeItem('user');
+    user.name = null;
+  }
+
+  function isLoggedIn() {
+    return user.name !== null;
   }
 
   function getUser() {

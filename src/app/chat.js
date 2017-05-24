@@ -9,8 +9,9 @@ function controller($scope, $log, userService, $state, otherUsers, messageProvid
   vm.userMessage = null;
   vm.post = postUserMessage;
   vm.allChatText = '';
+  vm.logout = logout;
 
-  if (!userService.getLoggedInUser()) {
+  if (!userService.isLoggedIn()) {
     $state.go('login');
     return;
   }
@@ -51,5 +52,10 @@ function controller($scope, $log, userService, $state, otherUsers, messageProvid
   function playSound() {
     var audio = new Audio('./app/click2.mp3');
     audio.play();
+  }
+
+  function logout() {
+    userService.logout();
+    $state.go('login');
   }
 }
