@@ -1,6 +1,5 @@
 var angular = require('angular');
 
-var techsModule = require('./app/techs/index');
 require('angular-ui-router');
 var routesConfig = require('./routes');
 
@@ -15,7 +14,7 @@ var messageProvider = require('./app/services/messageProvider');
 require('./index.css');
 
 angular
-  .module('app', [techsModule, 'ui.router'])
+  .module('app', ['ui.router'])
   .config(routesConfig)
   .component('app', main)
   .component('login', login)
