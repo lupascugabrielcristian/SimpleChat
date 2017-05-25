@@ -3,7 +3,6 @@ var angular = require('angular');
 require('angular-ui-router');
 var routesConfig = require('./routes');
 
-var main = require('./app/main');
 var login = require('./app/login');
 var chat = require('./app/chat');
 var userService = require('./app/services/user.service');
@@ -16,7 +15,6 @@ require('./index.css');
 angular
   .module('app', ['ui.router'])
   .config(routesConfig)
-  .component('app', main)
   .component('login', login)
   .component('chat', chat)
   .factory('userService', userService)
